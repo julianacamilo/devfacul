@@ -149,6 +149,7 @@ export const PersonalInformation = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+ 
 
   > div {
     display: flex;
@@ -177,6 +178,7 @@ export const UserInterests=  styled.section`
   gap: 1.5rem;
   justify-content: center;
   align-items: left;
+  margin-top: 16.3rem;
 
   > div {
     display: flex;
