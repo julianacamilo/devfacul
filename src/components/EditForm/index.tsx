@@ -1,43 +1,49 @@
 
 
-import { EditFormContainer, FormGroupOne,FormGroupTwo, FormRow, Input, Select, Button  } from "./style";
+import { useState } from "react";
+import { EditFormContainer, FormGroupOne,FormGroupTwo, FormRow, Input, Select, Button, FormRowWithSelect  } from "./style";
+
 
 
 function EditForm() {
-  const handleContentChange = (
-    event: React.FocusEvent<HTMLParagraphElement>,
-    field: string
-  ) => {
-    const newValue = event.target.innerText;
-    console.log(`Campo "${field}" atualizado para: ${newValue}`);
-  };
+  const [formData, setFormData] = useState<FormData>({
+    email: '',
+    password: '',
+    relationship: '',
+    date: '',
+    country: '',
+    profession: '',
+    city: '',
+  });
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLParagraphElement>) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      event.currentTarget.blur();
-    }
-  };
+  
+
+
 
   return (
-    <EditFormContainer>
-    <h3>Editar Informações</h3>
-    
-    <FormRow>
-        
-        <div className="group1-inputs">
-          <Input type="text" name="email" placeholder="E-mail" />
-          <Input type="password" name="password" placeholder="Senha" />
-        </div>
-        <Select name="relationship">
-        <option value="">Relacionamento</option>
-      <option value="Solteiro">Solteiro</option>
-      <option value="Viúvo">Viúvo</option>
-      <option value="Casado">Casado</option>
-        </Select>
-      </FormRow>
-    
 
+   
+    <EditFormContainer>
+
+    <h3>Editar Informações</h3>
+     <FormRowWithSelect>
+   
+    
+  <FormRow>
+    <div className="group1-inputs">
+      <Input type="text" name="email" placeholder="E-mail" />
+      <Input type="password" name="password" placeholder="Senha" />
+    </div>
+  </FormRow>
+  <Select name="relationship">
+      <option value="">Relacionamento</option>
+      <option value="Solteiro">Solteiro</option>
+      <option value="Casado">Casado</option>
+      <option value="Divorciado">Divorciado</option>
+      <option value="Namorando">Namorando</option>
+      <option value="Preocupado">Preocupado</option>
+    </Select>
+  </FormRowWithSelect>
     <FormGroupOne>
 
   <Input type="text" name="date" placeholder="Nascimento" />
@@ -58,6 +64,7 @@ function EditForm() {
 
     <Button type="submit">Salvar</Button>
   </EditFormContainer>
+
 );
 }
 
