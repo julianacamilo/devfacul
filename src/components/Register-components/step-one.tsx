@@ -3,12 +3,12 @@ import { Container, FormContainer } from '../../pages/Register/style';
 import logo from "../../assets/img/logo-orkut-simples.svg";
 import { StyledImage } from '../LoginBackground/style';
 import LoginBackground from '../LoginBackground';
+import { useNavigate } from 'react-router-dom';
 
-interface Props {
-  handleNext: () => void;
-}
 
- interface FormData {
+
+
+interface FormData {
   email: string;
   password: string;
   date: string;
@@ -18,8 +18,8 @@ interface Props {
   relationship: string;
 }
 
-const Step1 = ({ handleNext }: Props) => {
- const initialFormData: FormData = {
+const Step1 = () => {
+  const initialFormData: FormData = {
     email: '',
     password: '',
     date: '',
@@ -29,17 +29,18 @@ const Step1 = ({ handleNext }: Props) => {
     relationship: '',
   };
 
-   const [formData, setFormData] = useState<FormData>(initialFormData);
-    const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  
+  const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
 
- const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
     });
   };
-  
+
 
   const validateForm = () => {
     const errors: Record<string, string> = {};
@@ -60,28 +61,42 @@ const Step1 = ({ handleNext }: Props) => {
     return Object.keys(errors).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const navigate = useNavigate();
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+  
     if (!validateForm()) {
       console.log('Form validation failed.');
       return;
     }
-
-    console.log('Form submitted successfully.');
-    setFormData(initialFormData);
-    handleNext();
-  };
-
   
-const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
-  const { name, value } = e.target;
-  setFormData({
-    ...formData,
-    [name]: value,
-  });
-};
-
+    try {
+      const response = await fetch('http://localhost:3001/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (response.ok) {
+        console.log('Form submitted and registered successfully.');
+        setFormData(initialFormData);
+        navigate('/');
+      } else {
+        console.error('Error registering the form data.');
+      }
+    } catch (error) {
+      console.error('Error submitting the form:', error);
+    }
+  };
+  const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
   return (
 
   <Container>
@@ -160,8 +175,10 @@ DDD/MM/AAAA
     >
       <option value="">Relacionamento</option>
       <option value="Solteiro">Solteiro</option>
-      <option value="Viúvo">Viúvo</option>
       <option value="Casado">Casado</option>
+      <option value="Divorciado">Divorciado</option>
+      <option value="Namorando">Namorando</option>
+      <option value="Preocupado">Preocupado</option>
     </select>
     {formErrors.relationship && <span>{formErrors.relationship}</span>}
   </div>

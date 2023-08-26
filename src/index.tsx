@@ -10,6 +10,7 @@ import React from 'react';
 import ErrorPage from './pages/ErrorPage';
 import { Password } from './pages/Password/Password';
 
+
 const router = createBrowserRouter([
   {
     path: '/',
