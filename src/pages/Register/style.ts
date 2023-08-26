@@ -168,9 +168,11 @@ width: 24rem;
     background-repeat: no-repeat;
     background-position: calc(100% - 1rem) center;
     background-size: 1rem;
+   
   }
  
   
+ 
 
   span {
 

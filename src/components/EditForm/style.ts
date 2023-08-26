@@ -33,14 +33,19 @@ margin-top: 2rem;
     width: 100%;
   }
 `;
+export const FormRowWithSelect = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+`;
+
 export const FormRow = styled.div`
   display: flex;
-  gap: 8rem;
-  justify-content: space-between;
-  width:13.4315rem; 
-  height:3.1875rem;
-  margin-top:3.5rem;
-  margin-bottom: 3.5rem;
+  flex-direction: column;
+  width: 37rem;
+  height: 3.1875rem;
+  margin-bottom: 4rem;
 `;
 
 
@@ -50,7 +55,7 @@ export const FormGroupOne = styled.div`
   gap:0.75rem;
   width: 7.8125rem;
   height: 3.1875rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 4rem;
  
 `;
 
@@ -60,7 +65,7 @@ export const FormGroupTwo = styled.div`
   gap: 0.75rem;
   width: 13.1875rem;
   height:3.1875rem;
-  margin-bottom: 1rem;
+  margin-bottom: 7rem;
 `;
 
 
@@ -70,6 +75,7 @@ export const FormGroupTwo = styled.div`
 
 export const Input = styled.input`
   display: flex;
+ 
   margin-bottom: 0.5rem;
   border: none;
   border-radius: 0.5rem;
@@ -88,10 +94,12 @@ export const Select = styled.select`
   font-size: 1rem;
   padding: 0.625rem;
   width: 11.3125rem;
-  height:2.1875rem;
-  
- 
+  height: 2.1875rem;
+  margin-top:  0rem;
+  margin-left: auto; 
+
 `;
+
 
 
 
