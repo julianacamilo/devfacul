@@ -1,5 +1,15 @@
 {
   "users": [
-    
+    {},
+    {
+      "id": 1693062589579,
+      "email": "juliana@gmail.com",
+      "password": "jujuju",
+      "date": "dsahfa",
+      "profession": "fdsfs",
+      "country": "fdsafsdf",
+      "city": "fsdf",
+      "relationship": "Divorciado"
+    }
   ]
 }

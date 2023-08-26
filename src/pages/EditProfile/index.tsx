@@ -8,28 +8,66 @@ import MinimalUserProfileHeader from "../../components/UserProfileHeader/Minimal
 import photo from '../../assets/img/profile-image.png';
 import ellipse from "../../assets/img/ellip.svg";
 import edit from "../../assets/img/edit.svg";
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 
-function EditProfile() {
+interface FormData {
+  date: string;
+  profession: string;
+  country: string;
+  city: string;
+  relationship: string;
+}
 
-//The constant retrieves shared functions and variables from the user context in the application to manage the login state and modal visibility.
-  const {setUserIsLogged} = useContext(UserContext)!;
+const EditProfile: React.FC = () => {
+  const initialProfileData = {
+    date: '',
+    profession: '',
+    country: '',
+    city: '',
+    relationship: '',
+  };
 
-//This function serves to set the modalIsVisible state to true, making the modal visible in the user interface.
-  
-
-//The useEffect hook sets the userIsLogged state to true when the component mounts or when setUserIsLogged changes, likely initializing or updating the user login status.
+  const { setUserIsLogged, userToken } = useContext(UserContext)!; 
+  const navigate = useNavigate();
   useEffect(() => {
     setUserIsLogged(true);
   }, [setUserIsLogged]);
 
+  const handleEditFormSubmit = async (formData: FormData) => {
+    try {
+      const response = await axios.put(
+        'http://localhost:3001/profile', 
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        }
+      );
+      
+
+      if (response.status === 200) {
+        console.log('Profile updated successfully');
+        navigate('/profile');
+       
+      } else {
+        console.error('Failed to update profile');
+      
+      }
+    } catch (error) {
+      console.error('Erro ao atualizar o perfil:', error);
+    }
+  };
   return (
     <>
     <Container>
       <ProfileSide>
-      <MinimalUserProfileHeader photo={photo} ellipse={ellipse} edit={edit}/>
+      <MinimalUserProfileHeader photo={photo} edit={edit}/>
       </ProfileSide>
-      <EditForm />
+      <EditForm initialData={initialProfileData} onSubmit={handleEditFormSubmit} />
+
     </Container>
   
     </>

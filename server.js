@@ -4,11 +4,11 @@ const server = jsonServer.create();
 const router = jsonServer.router('db.json');
 const middlewares = jsonServer.defaults();
 
-const cors = require('cors'); // Adicione esta linha
+const cors = require('cors'); 
 
 server.use(jsonServer.bodyParser);
 
-server.use(cors()); // Use o middleware CORS
+server.use(cors()); 
 server.use(middlewares);
 
 const SECRET_KEY = 'f23#Gh4zTc6!9QweP2XyA$zU7p';
@@ -39,7 +39,7 @@ server.get('/profile', authenticateJWT, (req, res) => {
 server.post('/register', (req, res) => {
   const { email, password, date, profession, country, city, relationship } = req.body;
   const user = {
-    id: Date.now(), // Aqui você pode gerar IDs únicos de acordo com suas necessidades
+    id: Date.now(), 
     email,
     password,
     date,
@@ -58,13 +58,32 @@ server.post('/login', (req, res) => {
   const user = router.db.get('users').find({ email, password }).value();
 
   if (user) {
-    const token = jwt.sign({ userId: user.id }, SECRET_KEY);
+    const token = jwt.sign({ userId: user.id }, SECRET_KEY, { expiresIn: '24h' });
 
     res.json({ message: 'Login bem-sucedido!', token });
   } else {
     res.status(401).json({ message: 'Credenciais inválidas' });
   }
 });
+
+
+server.put('/profile', authenticateJWT, (req, res) => {
+  const { date, profession, country, city, relationship } = req.body;
+  const userProfile = router.db.get('users').find({ id: req.userId });
+
+  if (!userProfile) return res.status(404).json({ message: 'Perfil não encontrado' });
+
+  userProfile.assign({
+    date: date,
+    profession: profession,
+    country: country,
+    city: city,
+    relationship: relationship
+  }).write();
+
+  res.json({ message: 'Perfil atualizado com sucesso!' });
+});
+
 
 server.use(router);
 server.listen(3001, () => {
