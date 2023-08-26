@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const EditFormContainer = styled.form`
+export const EditFormContainer = styled.div`
   width: 37rem;
   height: 53.375rem;
   background: var(--dark-30);
@@ -33,19 +33,23 @@ margin-top: 2rem;
     width: 100%;
   }
 `;
+
+
 export const FormRowWithSelect = styled.div`
   display: flex;
   align-items: flex-start;
-  gap: 1.5rem;
+  gap: 6rem;
   margin-top: 3.5rem;
 `;
-
 export const FormRow = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 37rem;
-  height: 3.1875rem;
-  margin-bottom: 4rem;
+  gap: 8rem;
+  justify-content: space-between;
+  width:13.4315rem; 
+  height:3.1875rem;
+  margin-top:0rem;
+  margin-bottom: 3.5rem;
+>>>>>>> Stashed changes
 `;
 
 
@@ -94,10 +98,16 @@ export const Select = styled.select`
   font-size: 1rem;
   padding: 0.625rem;
   width: 11.3125rem;
+<<<<<<< Updated upstream
   height: 2.1875rem;
   margin-top:  0rem;
   margin-left: auto; 
 
+=======
+  height:2.1875rem;
+  margin-bottom: 3rem;
+ 
+>>>>>>> Stashed changes
 `;
 
 

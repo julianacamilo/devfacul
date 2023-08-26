@@ -53,7 +53,9 @@ export const UserProfile = styled.div`
   background: var(--dark-30);
   border-radius: 1rem; 
   color: var(--dark-10);
-  gap: 1.5rem; 
+  position: relative;
+  gap: 0rem; 
+ 
 
   > img {
     width: 10.625rem; 
@@ -61,18 +63,21 @@ export const UserProfile = styled.div`
     border-radius: 6.25rem;
     border: 0.1875rem solid var(--brand-color); 
     padding: 0.3125rem; 
+    margin-bottom: 0rem;
   }
 
   > h2 {
     font-size: 2rem; 
     font-style: normal;
     font-weight: 500;
+    margin: 0;
   }
 
   > p {
     font-size: 1.125rem; 
     font-style: normal;
     font-weight: 400;
+    margin: 0;
   }
 
 
@@ -97,13 +102,17 @@ export const UserProfile = styled.div`
 
 
 export const IconWrapper = styled.div`
-
-`;
-
-export const EllipseIcon = styled.img`
-
+  position: absolute; 
+  top: -0.5rem; 
+  transform: translateX(-10%); 
 `;
 
 export const EditIcon = styled.img`
-  
+border: 2.5px solid var(--brand-color); 
+border-radius: 50%; 
+padding: 0.25rem; 
+margin-right:7rem;
+margin-top:12.7rem;
+
+
 `;
