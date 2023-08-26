@@ -2,7 +2,6 @@ import React from 'react';
 import { ProfileHeader, UserProfile } from './style';
 import photo from '../../assets/img/profile-image.png';
 import MinimalUserProfileHeader from './Minimal';
-import ellipse from "../../assets/img/ellip.svg";
 import edit from "../../assets/img/edit.svg";
 
 interface UserProfileHeaderProps {
@@ -22,7 +21,7 @@ const UserProfileHeader: React.FC<UserProfileHeaderProps> = ({
   minimal = false, // Set a default value
 }) => {
   if (minimal) {
-    return <MinimalUserProfileHeader photo={photo} ellipse={ellipse} edit={edit} />;
+    return <MinimalUserProfileHeader photo={photo} edit={edit} />;
   }
 
   return (

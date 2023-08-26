@@ -15,6 +15,16 @@ import thumbsUpIcon from '../../assets/img/ThumbsUp.svg';
 import { UserContext, UserProvider } from '../../context/user-context';
 import Cookies from 'js-cookie';
 import axios from 'axios';
+import EditForm from '../EditForm';
+
+   export interface UserProfile {
+  relationship: string;
+  date: string;
+  profession: string;
+  city: string;
+  country: string;
+
+}
 
 function ProfileInfo() {
   const userContext = useContext(UserContext);
@@ -25,7 +35,7 @@ function ProfileInfo() {
     profession: '',
     city: '',
     country: '',
-    // outras propriedades
+
   });
 
   const fetchProfileData = async () => {
@@ -58,11 +68,13 @@ function ProfileInfo() {
   useEffect(() => {
     fetchProfileData();
   }, []);
-
+  const handleUpdateProfile = (updatedData: UserProfile) => {
+    setUserProfile(updatedData); 
+  };
   return (
    
       <ProfileInfoSection>
-        <h2>Boa tarde</h2>
+        <h2>Boa tarde!</h2>
        
         <Triangle />
         <PhraseContainer>
