@@ -2,10 +2,16 @@ import React from 'react'
 import { Container, FormContainer} from '../../pages/Register/style'
 import logo from "../../assets/img/logo-orkut-simples.svg";
 import { FormPassword } from '../../pages/Password/styles';
+import { useNavigate } from 'react-router-dom';
 export const NewPassword = () => {
+
+  const navigate = useNavigate()
+    const handleSubmit = () => {
+      navigate("/")
+    }
   return (
 
-  
+    
 <FormPassword>
     <img src={logo} alt="Logo" />
     <h2>Nova Senha</h2>
@@ -30,8 +36,8 @@ export const NewPassword = () => {
            Salvar
           </button>
           <div>
-            <h3>Lembrou sua Senha?</h3>
-            <button type="submit" className="btn-two">Entrar com as credenciais</button>
+            <h3 onClick={handleSubmit}>Lembrou sua Senha?</h3>
+            <button type="submit" className="btn-bck" onClick={handleSubmit}>Entrar com as credenciais</button>
           </div>
     </FormPassword>
 

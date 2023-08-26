@@ -4,6 +4,7 @@ import LoginBackground from '../LoginBackground';
 import logo from "../../assets/img/logo-orkut-simples.svg";
 import { FormPassword } from '../../pages/Password/styles';
 import { NewPassword } from './form-two';
+import { useNavigate } from 'react-router-dom';
 
 export const PasswordUpdate = () => {
   const [showVerificationForm, setShowVerificationForm] = useState(false);
@@ -12,6 +13,10 @@ export const PasswordUpdate = () => {
     setShowVerificationForm(true);
   };
 
+ const navigate = useNavigate()
+const handleSubmit = () => {
+  navigate("/")
+}
   return (
     <Container>
       <LoginBackground/>
@@ -30,8 +35,8 @@ export const PasswordUpdate = () => {
             Enviar Código
           </button>
           <div>
-            <h3>Lembrou sua Senha?</h3>
-            <button type="submit" className="btn-bck">Entrar com as credenciais</button>
+            <h3 onClick={handleSubmit}>Lembrou sua Senha?</h3>
+            <button type="submit" className="btn-bck" onClick={handleSubmit}>Entrar com as credenciais</button>
           </div>
         </FormPassword>
       )}
