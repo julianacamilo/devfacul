@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useContext } from 'react';
 import {
   ProfileInfoSection,
   PhraseContainer,
@@ -11,11 +12,58 @@ import starIcon from '../../assets/img/Star.svg';
 import heartIcon from '../../assets/img/Heart.svg';
 import smileyIcon from '../../assets/img/Smiley.svg';
 import thumbsUpIcon from '../../assets/img/ThumbsUp.svg';
+import { UserContext, UserProvider } from '../../context/user-context';
+import Cookies from 'js-cookie';
+import axios from 'axios';
+
 function ProfileInfo() {
+  const userContext = useContext(UserContext);
+
+  const [userProfile, setUserProfile] = useState({
+    relationship: '',
+    date: '',
+    profession: '',
+    city: '',
+    country: '',
+    // outras propriedades
+  });
+
+  const fetchProfileData = async () => {
+    if (!userContext) {
+      console.error('Context not available');
+      return;
+    }
+    console.log('Token:', userContext.userToken);
+    try {
+      const response = await axios.get('http://localhost:3001/profile', {
+        headers: {
+          Authorization: `Bearer ${userContext.userToken}`,
+        },
+      });
+      console.log('Profile Data:', response.data); 
+      const fetchedUserProfile = response.data.userProfile;
+      setUserProfile(fetchedUserProfile);
+    } catch (error) {
+      console.error('Erro ao buscar perfil:', error);
+    }
+  };
+
+ 
+
+  useEffect(() => {
+    fetchProfileData();
+  }, []);
+
+
+  useEffect(() => {
+    fetchProfileData();
+  }, []);
+
   return (
-    <>
+   
       <ProfileInfoSection>
-        <h2>Boa tarde, Gabriel Barbosa</h2>
+        <h2>Boa tarde</h2>
+       
         <Triangle />
         <PhraseContainer>
           <p>Programar sem café é igual poeta sem poesia.</p>
@@ -52,33 +100,30 @@ function ProfileInfo() {
         <PersonalInformation>
           <div>
             <h3>Relacionamento:</h3>
-            <p>Solteiro</p>
+            <p>{userProfile?.relationship}</p>
           </div>
           <div>
             <h3>Aniversário:</h3>
-            <p>21 de julho</p>
+            <p>{userProfile?.date}</p>
           </div>
           <div>
             <h3>Idade:</h3>
-            <p>22</p>
+            <p>20</p>
           </div>
           <div>
             <h3>Quem sou eu:</h3>
-            <p>Programador</p>
+            <p>{userProfile?.profession}</p>
           </div>
          
           <div>
             <h3>Moro:</h3>
-            <p>Guarantã</p>
+            <p>{userProfile?.city}</p>
           </div>
           <div>
             <h3>País:</h3>
-            <p>Brasil</p>
+            <p>{userProfile?.country}</p>
           </div>
-          <div>
-            <h3>Cidade natal:</h3>
-            <p>São Paulo</p>
-          </div>
+          
 
           <UserInterests>
             <div>
@@ -95,9 +140,11 @@ function ProfileInfo() {
               <button>Ver todos</button>
             </div>
           </UserInterests>
+    
         </PersonalInformation>
+        
       </ProfileInfoSection>
-    </>
+
   );
 }
 
