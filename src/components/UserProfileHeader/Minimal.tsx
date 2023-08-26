@@ -15,7 +15,7 @@ const MinimalUserProfileHeader: React.FC<MinimalUserProfileHeaderProps> = ({ pho
         <UserProfile>
           <img src={photo} alt="" />
           <IconWrapper>
-            <EditIcon src={edit} alt="Edit" />
+   <EditIcon src={edit} alt="Edit" />
           </IconWrapper>
         </UserProfile>
       </ProfileHeader>
