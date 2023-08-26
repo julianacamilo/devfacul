@@ -1,5 +1,5 @@
 import React, { useState, useContext, ChangeEvent, FormEvent } from 'react';
-import { EditFormContainer, Input, Button, FormRow, FormRowWithSelect, Select, FormGroupOne, FormGroupTwo} from './style';
+import { EditFormContainer, Input, Button, FormRow, Select,FormRowWithSelect, FormGroupOne, FormGroupTwo} from './style';
 import axios from 'axios';
 import { UserContext } from '../../context/user-context';
 interface EditFormProps {
