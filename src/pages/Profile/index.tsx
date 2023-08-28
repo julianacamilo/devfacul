@@ -19,6 +19,7 @@ function Profile() {
     country: 'Brasil',
   });
 
+  // The fetchProfileData function is responsible for fetching user profile data.
   const fetchProfileData = async () => {
     try {
       if (userContext) {
@@ -36,6 +37,8 @@ function Profile() {
     }
   };
 
+  // The useEffect effect is used to set the user as logged in and fetch the profile data.
+  
   useEffect(() => {
  
     setUserIsLogged(true);

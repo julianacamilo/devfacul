@@ -16,6 +16,8 @@ interface EditFormProps {
 const EditForm: React.FC<EditFormProps> = ({ initialData, onSubmit }) => {
   const [formData, setFormData] = useState(initialData);
 
+  // This function is called whenever an input field (input or select) in the form is changed. It receives the event (e) which contains the information about the field that has changed. The function extracts the changed field name and value, updates the formData state using the setFormData function, leaving the other fields unchanged.
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -24,6 +26,8 @@ const EditForm: React.FC<EditFormProps> = ({ initialData, onSubmit }) => {
     }));
   };
 
+  //This function is called when the form is submitted. It prevents the default page reload behavior that would occur with form submission. It then calls the onSubmit function passing the updated form data as an argument.
+  
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
