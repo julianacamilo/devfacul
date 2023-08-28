@@ -1,25 +1,45 @@
-import { useEffect,useContext} from 'react';
+import { useEffect,useContext, useState} from 'react';
 import SearchIcon from '../../assets/img/Search.svg';
 import { Container,InputContainer} from './style';
 import UserProfileHeader from '../../components/UserProfileHeader';
 import ListOfFriends from '../../components/ListOfFriends';
 import ListOfCommunity from '../../components/ListOfCommunity';
 import ProfileInfo from '../../components/ProfileInfo';
-import { UserContext } from '../../context/user-context';
 import { useNavigate } from 'react-router';
+import { UserContext } from '../../context/user-context';
+import axios from 'axios';
 function Profile() {
- // Getting the setUserIsLogged function from the UserContext using the useContext hook
+  const userContext = useContext(UserContext); 
  const {setUserIsLogged} = useContext(UserContext)!;
   
- // Getting the navigate function to perform programmatic navigation between routes
   const navigate = useNavigate();
 
+  const [userProfile, setUserProfile] = useState({
+    relationship: 'Solteiro', 
+    country: 'Brasil',
+  });
 
-  // Using the useEffect hook to perform a side effect
-  // This will occur whenever the reference of the setUserIsLogged function changes
+  const fetchProfileData = async () => {
+    try {
+      if (userContext) {
+        const response = await axios.get('http://localhost:3001/profile', {
+          headers: {
+            Authorization: `Bearer ${userContext.userToken}`, // Use userContext aqui
+          },
+        });
+
+        const fetchedUserProfile = response.data.userProfile;
+        setUserProfile(fetchedUserProfile);
+      }
+    } catch (error) {
+      console.error('Erro ao buscar perfil:', error);
+    }
+  };
+
   useEffect(() => {
-    // Setting the user's login state to "true" when the component is mounted
+ 
     setUserIsLogged(true);
+    fetchProfileData(); 
   }, [setUserIsLogged]);
 
 
@@ -33,11 +53,10 @@ function Profile() {
       </div>
       <div className='profileHeaderDiv'>
       <UserProfileHeader
-        name="Gabriel Barbosa"
-        status="Solteiro, Brasil"
-        buttonContent="Editar meu perfil"
-        handleButton={() => { navigate('/edit-profile')}}
-      />
+             relationshipStatus={`${userProfile.relationship}, ${userProfile.country}`}
+          buttonContent="Editar meu perfil"
+          handleButton={() => { navigate('/edit-profile')}}
+        />
       </div>
       <div className='ProfileInfoDiv'>
       <ProfileInfo /> 

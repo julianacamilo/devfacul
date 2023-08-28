@@ -32,7 +32,7 @@ export const NewPassword = () => {
            placeholder="Confirmar a Senha"
           />
           </div>
-          <button type="button" className='btn-one'>
+          <button type="button" className='btn-one' onClick={handleSubmit}>
            Salvar
           </button>
           <div>
