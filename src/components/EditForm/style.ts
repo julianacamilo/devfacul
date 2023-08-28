@@ -30,7 +30,7 @@ margin-top: 2rem;
   }
 
   @media (max-width: 48rem) {
-    width: 100%;
+    width: 93%;
   }
 `;
 
@@ -39,6 +39,12 @@ display: flex;
 align-items: flex-start;
 gap: 6rem;
 margin-top: 3.5rem;
+
+
+@media (max-width: 48rem) {
+  gap: 3rem; /* Adjusted gap for smaller screens */
+}
+
 `
 
 export const FormRow = styled.div`
