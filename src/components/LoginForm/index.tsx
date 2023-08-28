@@ -82,8 +82,15 @@ function LoginForm() {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        handleEmailBlur();
+        handlePasswordBlur();
+
+        // Verifique se há erros
+        if (email && password && !emailError && !passwordError) {
+            handleLogin();
+        }
+
         setIsFormSubmitted(true);
-        handleLogin();
     };
 
     const handleCreateProfile = () => {
@@ -104,7 +111,7 @@ function LoginForm() {
                     onBlur={handleEmailBlur}
                     placeholder="E-mail"
                 />
-                {isLoginAttempted && emailError && (
+                 {isFormSubmitted && emailError && (
                     <ErrorContainer>
                         <ErrorMessage>{emailError}</ErrorMessage>
                     </ErrorContainer>
@@ -117,7 +124,7 @@ function LoginForm() {
                     onBlur={handlePasswordBlur}
                     placeholder="Senha"
                 />
-                {isLoginAttempted && passwordError && (
+                {isFormSubmitted && passwordError && (
                     <ErrorContainer>
                         <ErrorMessage>{passwordError}</ErrorMessage>
                     </ErrorContainer>
@@ -144,7 +151,7 @@ function LoginForm() {
                 <CreateAccountButton type="button" onClick={handleCreateProfile}>
                     Criar uma conta
                 </CreateAccountButton>
-                <ForgotPasswordLink title="Esqueci a minha senha" href="http://localhost:3000/" >
+                <ForgotPasswordLink title="Esqueci a minha senha" href="http://localhost:3000/password" >
                     Esqueci a minha senha
                
                 </ForgotPasswordLink>
