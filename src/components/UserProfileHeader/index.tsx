@@ -5,31 +5,31 @@ import MinimalUserProfileHeader from './Minimal';
 import edit from "../../assets/img/edit.svg";
 
 interface UserProfileHeaderProps {
-  name: string;
-  status: string;
+  relationshipStatus: string;
+
   buttonContent: string;
   handleButton?: () => void;
-  minimal?: boolean; // Add a minimal prop to indicate if it should be minimal
+  minimal?: boolean;
 }
 
-
 const UserProfileHeader: React.FC<UserProfileHeaderProps> = ({
-  name,
-  status,
+  relationshipStatus,
   buttonContent,
   handleButton,
-  minimal = false, // Set a default value
+  minimal = false,
 }) => {
   if (minimal) {
     return <MinimalUserProfileHeader photo={photo} edit={edit} />;
   }
 
+  const staticName = "Gabriel Barbosa"; // Nome estático
+
   return (
     <ProfileHeader>
       <UserProfile>
         <img src={photo} alt="" />
-        <h2>{name}</h2>
-        <p>{status}</p>
+        <h2>{staticName}</h2>
+        <p>{relationshipStatus}</p>
       </UserProfile>
       <button onClick={handleButton}>{buttonContent}</button>
     </ProfileHeader>

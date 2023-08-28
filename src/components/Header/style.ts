@@ -253,3 +253,7 @@ export const PerfilContent = styled.div`
     }
   }
 `;
+
+export const HeaderLoginIn = styled.div`
+  
+`

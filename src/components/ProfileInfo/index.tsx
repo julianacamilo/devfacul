@@ -37,7 +37,7 @@ function ProfileInfo() {
     country: '',
 
   });
-
+  const [isLoading, setIsLoading] = useState(true); 
   const fetchProfileData = async () => {
     if (!userContext) {
       console.error('Context not available');
@@ -53,8 +53,10 @@ function ProfileInfo() {
       console.log('Profile Data:', response.data); 
       const fetchedUserProfile = response.data.userProfile;
       setUserProfile(fetchedUserProfile);
+      setIsLoading(false);
     } catch (error) {
       console.error('Erro ao buscar perfil:', error);
+      setIsLoading(false);
     }
   };
 
@@ -74,6 +76,11 @@ function ProfileInfo() {
   return (
    
       <ProfileInfoSection>
+           {isLoading ? ( 
+                <p>Loading...</p>
+            ) : (
+              <>
+              
         <h2>Boa tarde!</h2>
        
         <Triangle />
@@ -154,7 +161,9 @@ function ProfileInfo() {
           </UserInterests>
     
         </PersonalInformation>
-        
+        </>
+            )}
+
       </ProfileInfoSection>
 
   );
