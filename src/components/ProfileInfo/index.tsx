@@ -38,6 +38,9 @@ function ProfileInfo() {
 
   });
   const [isLoading, setIsLoading] = useState(true); 
+
+  // Function to fetch user profile data
+
   const fetchProfileData = async () => {
     if (!userContext) {
       console.error('Context not available');
@@ -61,15 +64,14 @@ function ProfileInfo() {
   };
 
  
+// Effect to fetch profile data when assembling the component
 
   useEffect(() => {
     fetchProfileData();
   }, []);
 
 
-  useEffect(() => {
-    fetchProfileData();
-  }, []);
+// Function to handle updating profile data
   const handleUpdateProfile = (updatedData: UserProfile) => {
     setUserProfile(updatedData); 
   };

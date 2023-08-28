@@ -18,6 +18,8 @@ const UserProfileHeader: React.FC<UserProfileHeaderProps> = ({
   handleButton,
   minimal = false,
 }) => {
+  // Checking if component should be rendered in minimalist style
+  // If the minimal property is true, the component renders a minimalist header using the MinimalUserProfileHeader component.
   if (minimal) {
     return <MinimalUserProfileHeader photo={photo} edit={edit} />;
   }
