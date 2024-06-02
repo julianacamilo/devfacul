@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 export const NewPassword = () => {
 
   const navigate = useNavigate()
+  
+  // Function to handle verification form submission
     const handleSubmit = () => {
       navigate("/")
     }

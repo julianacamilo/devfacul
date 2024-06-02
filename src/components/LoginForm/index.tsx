@@ -42,6 +42,12 @@ function LoginForm() {
 
     const navigate = useNavigate();
 
+
+    // Function to handle the login attempt
+        // Make a request to the server with email and password
+        // If the response is successful, set the user as logged in and redirect to the profile page
+        // If not, set an error message
+
     const handleLogin = async () => {
         try {
           const response = await axios.post('http://localhost:3001/login', {
@@ -64,11 +70,18 @@ function LoginForm() {
           setLoginError('Erro ao fazer login');
         }
       };
+
+      // Function to handle focus outside password field
+        // If the form has been submitted, check if the password field is empty and set an error if necessary
+
     const handleEmailBlur = () => {
         if (isFormSubmitted) {
             setEmailError(email ? '' : 'Campo de e-mail não pode ser vazio.');
         }
     };
+
+    // Function to handle the change in the "Remember my password" checkbox
+        // Update the state of the checkbox
 
     const handlePasswordBlur = () => {
         if (isFormSubmitted) {
@@ -80,12 +93,18 @@ function LoginForm() {
         setRememberPassword(e.target.checked);
     };
 
+    // Function to handle form submission
+        // Prevents the default page reload behavior
+        // Call focus handler functions outside email and password fields
+        // Check email and password fields for errors
+        // If there are no errors, call the login function
+        
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         handleEmailBlur();
         handlePasswordBlur();
 
-        // Verifique se há erros
+     
         if (email && password && !emailError && !passwordError) {
             handleLogin();
         }

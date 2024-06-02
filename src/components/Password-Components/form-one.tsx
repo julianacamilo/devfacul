@@ -7,6 +7,9 @@ import { NewPassword } from './form-two';
 import { useNavigate } from 'react-router-dom';
 
 export const PasswordUpdate = () => {
+
+  // State to control whether the code verification form should be displayed
+
   const [showVerificationForm, setShowVerificationForm] = useState(false);
 
   const handleSendCode = () => {
@@ -14,6 +17,9 @@ export const PasswordUpdate = () => {
   };
 
  const navigate = useNavigate()
+
+ // Function to handle verification form submission
+ 
 const handleSubmit = () => {
   navigate("/")
 }

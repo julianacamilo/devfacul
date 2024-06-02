@@ -1,23 +1,30 @@
-# ![logo-orkut-simples](https://github.com/MarcosvBueno/orkut-squad-5/assets/104960654/4ba73666-b59f-4866-92f5-b6ff4bf8cbc1)rkut:
+# UOLkut:
 
-<p>This project represents the second challenge of the Compass.UOL Scholarship Program, and this time, it was undertaken collaboratively as a group effort. The primary objective was to develop 
-  a website inspired by the classic social networking platform, Orkut. Our task involved creating a responsive web application with various distinct page routes, 
-  enabling users to access different sections seamlessly on various devices. Additionally, we implemented a user registration and login system to enhance the overall user experience.</p>
+<p>This project represents the third challenge of the Compass.UOL Scholarship Program. At this stage, a website inspired by the classic Orkut was created. The goal was to develop a responsive web application with multiple distinct page routes, allowing users to browse different sections on different devices.</p>
 
 ## List of Features:
-- The website allows users to navigate through various pages, enabling them to explore different sections and content.
+- Users can easily navigate through multiple pages, allowing them to explore different sections and contents of the site.
 
-- Users can create their accounts on the platform, providing essential information such as name, email, and password.
+- Implemented a robust authentication system for registration and login processes.
+Users can create custom accounts on the platform by providing essential information such as email and password.
 
-- Registered users have the flexibility to edit and update their profile information, including profile picture, bio, and other relevant details.
+- Used authentication tokens to ensure data security and protect users' personal information.
+These tokens are used to authenticate users' sessions and provide secure access to their accounts.
 
-- Users can log in to their accounts, gaining personalized access to features and content reserved for registered users.
+- The data provided during registration is used to customize each user's profile page.
+Profile details such as biography and other relevant information are rendered based on user data.
+Dynamic Profile .
+
+- Implemented an "Edit Profile" feature that allows users to update their profile information.
+Changes made to the profile not only update the data in the database, but also render the profile page in real-time, providing a dynamic and immediate experience.
+
+- The web app is responsive and adapts to various screen sizes and devices, offering a consistent and user-friendly experience for users.
+
+
 
 ## Technologies Used:
-[![My Skills](https://skillicons.dev/icons?i=react,ts)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=react,ts)](https://skillicons.dev)  🔐 JSON Server Auth
 
-## Demonstration :
-https://github.com/MarcosvBueno/orkut-squad-5/assets/104960654/5e474bc4-cdc0-491d-b94f-d6aeee4f6f03
 
 ## How to run the project :
 
@@ -34,6 +41,7 @@ https://github.com/MarcosvBueno/orkut-squad-5/assets/104960654/5e474bc4-cdc0-491
 
 4. **Running the project:**
    - npm start
+   - node server.js
 
 
 5. **Accessing the project:**

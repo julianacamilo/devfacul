@@ -29,14 +29,21 @@ const EditProfile: React.FC = () => {
     relationship: '',
   };
 
+  // UserContext context is used to get user login information.
+
   const { setUserIsLogged, userToken } = useContext(UserContext)!; 
+
   const navigate = useNavigate();
+
   useEffect(() => {
     setUserIsLogged(true);
   }, [setUserIsLogged]);
 
+  // The handleEditFormSubmit function is responsible for sending a PUT request to update the user's profile.
+
   const handleEditFormSubmit = async (formData: FormData) => {
     try {
+      // Sending a PUT request to update the profile
       const response = await axios.put(
         'http://localhost:3001/profile', 
         formData,
@@ -50,7 +57,7 @@ const EditProfile: React.FC = () => {
 
       if (response.status === 200) {
         console.log('Profile updated successfully');
-        navigate('/profile');
+        navigate('/profile'); // Navigating back to the profile
        
       } else {
         console.error('Failed to update profile');

@@ -33,6 +33,9 @@ const Step1 = () => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
 
+  // Handler for changing form fields
+// The handleChange function is called whenever the form fields are changed to update the formData state.
+
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -41,7 +44,7 @@ const Step1 = () => {
     });
   };
 
-
+// Function to validate the form
   const validateForm = () => {
     const errors: Record<string, string> = {};
 
@@ -62,6 +65,10 @@ const Step1 = () => {
   };
 
   const navigate = useNavigate();
+
+  // Handler to handle form submission
+  // The handleSubmit function is called when the form is submitted. It validates the form, sends the data to the API and redirects the user after registration.
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   
@@ -90,6 +97,9 @@ const Step1 = () => {
       console.error('Error submitting the form:', error);
     }
   };
+
+  // Handler to handle the change in the "relationship" field
+
   const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData({

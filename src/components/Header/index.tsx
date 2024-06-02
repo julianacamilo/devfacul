@@ -8,10 +8,14 @@ import photo from '../../assets/img/profile-image.png';
 import { useLocation } from "react-router-dom";
 function Header() {
 
+  // Gets the state of the user context, specifically the userIsLogged property.
+
   const { userIsLogged } = useContext(UserContext)!;
   console.log(userIsLogged);
   const location = useLocation();
 
+  // Checks if the current location is the main page ("/").
+  
   if (location.pathname === "/") {
     return  <HeaderLoginIn>
    <HeaderWrapper>
