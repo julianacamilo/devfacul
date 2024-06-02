@@ -24,7 +24,7 @@ const UserProfileHeader: React.FC<UserProfileHeaderProps> = ({
     return <MinimalUserProfileHeader photo={photo} edit={edit} />;
   }
 
-  const staticName = "Gabriel Barbosa"; // Nome estático
+  const staticName = "Juliana Barros"; // Nome estático
 
   return (
     <ProfileHeader>

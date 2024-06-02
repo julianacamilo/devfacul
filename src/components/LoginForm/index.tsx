@@ -120,7 +120,7 @@ function LoginForm() {
     return (
         <LoginFormContainer>
             <LogoImage src={logo} alt="Logo" />
-            <LoginTitle>Acesse o Orkut</LoginTitle>
+            <LoginTitle>Acesse</LoginTitle>
             <Form  onSubmit={handleSubmit}>
                 <EmailInput
                     id="email"

@@ -21,9 +21,9 @@ function Header() {
    <HeaderWrapper>
     <div>
 
-      <h2>UOLkut</h2>
+      <h2>Form</h2>
       <nav>
-        <a href="/">Sobre o Orkut</a>
+        <a href="/">Sobre</a>
          <a href="/">Centro de segurança</a> 
       </nav>
     </div>
@@ -40,7 +40,7 @@ function Header() {
         <HeaderLogin>
           <div>
             <NavContent>
-              <h2>UOLkut</h2>
+              <h2>Form</h2>
               <nav>
                 <ul>
                   <li><a href="/">Início</a></li>
@@ -57,7 +57,7 @@ function Header() {
               </InputContent>
               <PerfilContent>
                 <img src={photo} alt="" />
-                <p>Gabriel Barbosa</p>
+                <p>Juliana Barros</p>
                 <img src={caretIcon} alt="" />
               </PerfilContent>
             </ContainerInputWUser>
@@ -66,7 +66,7 @@ function Header() {
       ) : (
         <HeaderWrapper>
           <div>
-            <h2>UOLkut</h2>
+            <h2>Form</h2>
             <nav>
              
                <a href="/">Centro de segurança</a> 
