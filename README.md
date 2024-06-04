@@ -23,6 +23,9 @@ Changes made to the profile not only update the data in the database, but also r
 ## Technologies Used:
 [![My Skills](https://skillicons.dev/icons?i=react,ts)](https://skillicons.dev)  🔐 JSON Server Auth
 
+## Postman
+
+https://documenter.getpostman.com/view/26419809/2sA3Qy7VLk
 
 ## How to run the project :
 
@@ -44,3 +47,5 @@ Changes made to the profile not only update the data in the database, but also r
 
 5. **Accessing the project:**
 Open the project in your browser at: `http://localhost:3000` (or another port, if specified).
+
+
