@@ -78,22 +78,7 @@ server.post('/login', (req, res) => {
 
 // Route to update authenticated user profile
 
-server.put('/profile', authenticateJWT, (req, res) => {
-  const { date, profession, country, city, relationship } = req.body;
-  const userProfile = router.db.get('users').find({ id: req.userId });
 
-  if (!userProfile) return res.status(404).json({ message: 'Perfil não encontrado' });
-
-  userProfile.assign({
-    date: date,
-    profession: profession,
-    country: country,
-    city: city,
-    relationship: relationship
-  }).write();
-
-  res.json({ message: 'Perfil atualizado com sucesso!' });
-});
 
 
 server.use(router);
