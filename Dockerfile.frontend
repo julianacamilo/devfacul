@@ -1,0 +1,26 @@
+# Use a imagem do Node.js
+FROM node:14
+
+# Defina o diretório de trabalho no contêiner
+WORKDIR /app
+
+# Copie o package.json e package-lock.json para o diretório de trabalho
+COPY package*.json ./
+
+# Instale as dependências
+RUN npm install
+
+# Copie o código do projeto para o diretório de trabalho
+COPY . .
+
+# Construa o projeto para produção
+RUN npm run build
+
+# Instale o servidor http para servir a aplicação
+RUN npm install -g serve
+
+# Exponha a porta na qual a aplicação estará rodando
+EXPOSE 3000
+
+# Comando para rodar a aplicação
+CMD ["serve", "-s", "build"]

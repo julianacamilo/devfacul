@@ -1,9 +1,15 @@
-
-
 {
   "users": [
+    {},
     {
-
+      "id": 1717458445898,
+      "email": "gabrieldosanjos136@icloud.com",
+      "password": "ggaaaaa",
+      "date": "25/12/2003",
+      "profession": "assaltante",
+      "country": "Brasil",
+      "city": "olinda",
+      "relationship": "Solteiro"
     }
   ]
 }
