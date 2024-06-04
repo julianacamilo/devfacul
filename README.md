@@ -1,6 +1,4 @@
-# UOLkut:
 
-<p>This project represents the third challenge of the Compass.UOL Scholarship Program. At this stage, a website inspired by the classic Orkut was created. The goal was to develop a responsive web application with multiple distinct page routes, allowing users to browse different sections on different devices.</p>
 
 ## List of Features:
 - Users can easily navigate through multiple pages, allowing them to explore different sections and contents of the site.
